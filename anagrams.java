@@ -6,7 +6,7 @@ class anagrams {
 	static int noofChars = 256;
 	private static Scanner p;
 	
-	static String anagram(String strin, ArrayList<String> list ) {
+	static String anagram(String strin, ArrayList<String> list) {
 		long epochIni = System.currentTimeMillis();
 		String FinalOut = "";
 		int Wordcnt = 0;
