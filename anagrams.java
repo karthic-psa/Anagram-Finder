@@ -60,8 +60,6 @@ class anagrams {
 		try {
 			if (!args[0].isEmpty() && args.length==1) {
 				String filename = args[0];
-				
-				
 				ArrayList<String> words = new ArrayList<String>();
 				System.out.printf("%n%nWelcome to Anagram Finder%n");
 				System.out.println("-------------------------");
@@ -97,12 +95,11 @@ class anagrams {
 				inStr.close();
 			}
 			else {
-				
 					System.out.printf("Please enter single filename >>> Exiting...%n");
 			}
 		}
-	catch (Exception e) {
-		System.out.printf("Please enter single filename >>> Exiting...%n");
+		catch (Exception e) {
+			System.out.printf("Please enter single filename >>> Exiting...%n");
 		}
 	}
 }
