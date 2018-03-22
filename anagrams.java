@@ -1,12 +1,14 @@
 //package test;
 import java.io.*;
 import java.util.*;
+
 class anagrams {
+	
 	static int noofChars = 256;
-	private static Scanner x;
+//	private static Scanner x;
 	private static Scanner p;
 	
-	static String anagram(String strin, String filename) {
+	static String anagram(String strin, ArrayList<String> list ) {
 		long epochIni = System.currentTimeMillis();
 		String FinalOut = "";
 		int Wordcnt = 0;
@@ -16,14 +18,16 @@ class anagrams {
 		for(int i = 0; i<str1.length;i++) {
 			cnt1[str1[i]]++;
 		}
-		try {
-			x=new Scanner(new File(filename));
-		}
-		catch (Exception e){
-			return "No File";
-		}
-		while (x.hasNext()) {
-			String strTemp = x.next();
+//		try {
+//			x=new Scanner(new File(filename));
+//		}
+//		catch (Exception e){
+//			return "No File";
+//		}
+		//while (list..hasNext()) {
+		for(String word:list) {
+			//String strTemp = x.next();
+			String strTemp = word;
 			int Tempcnt = 0;
 			char[] str2 = strTemp.toCharArray();
 			if (str2.length == str1.length) {
@@ -51,7 +55,7 @@ class anagrams {
 				}
 			}
 		}
-		x.close();
+		//x.close();
 		long epochEnd = System.currentTimeMillis();
 		long totTime = epochEnd-epochIni;
 		if(Wordcnt>0) {
@@ -63,31 +67,60 @@ class anagrams {
 		}
 	}
 	public static void main(String args[]) {
-		String filename = args[0];
-		System.out.println("Welcome to Anagram Finder");
-		System.out.println("-------------------------");
-//		long Loadstartepoch = System.currentTimeMillis();
-//		String brk = "";
 		try {
-			p=new Scanner(new File(filename));
+			if (!args[0].isEmpty() && args.length==1) {
+				String filename = args[0];
+				
+				
+				ArrayList<String> words = new ArrayList<String>();
+				System.out.printf("%n%nWelcome to Anagram Finder%n");
+				System.out.println("-------------------------");
+		//		long Loadstartepoch = System.currentTimeMillis();
+		//		String brk = "";
+				try {
+						long Loadstartepoch = System.currentTimeMillis();
+						p=new Scanner(new File(filename));
+						while (p.hasNext()) {
+							words.add(p.next());
+						}
+						p.close();
+						long Loadendepoch = System.currentTimeMillis();
+						long TotloadTime = Loadendepoch-Loadstartepoch;
+						System.out.printf("Dictionary loaded in %sms %n%n",String.valueOf(TotloadTime));
+				}
+				catch (Exception e){
+					System.out.println("No File, please type 'exit' to quit program execution and run the program again with the right file(name) as input");
+				}
+				
+				
+		//		p.close();
+		//		long Loadendepoch = System.currentTimeMillis();
+		//		long TotloadTime = Loadendepoch-Loadstartepoch;
+		//		System.out.printf("Dictionary loaded in %sms",String.valueOf(TotloadTime));
+				Scanner inStr = new Scanner(System.in);
+				System.out.println("AnagramFinder>Enter Word: ");
+				String str1 = inStr.nextLine();
+				while (!str1.equals("exit")){
+					if (!words.isEmpty()) {
+						String outP = anagram(str1,words);
+						System.out.printf(outP+"%n%n");
+						System.out.println("AnagramFinder>Enter Word: ");
+						str1 = inStr.nextLine();
+						}
+					else {
+						System.out.println("No words in file to search or filename given is wrong >>> Exiting...");
+						str1 = "exit";
+					}
+				}
+				inStr.close();
+			}
+			else {
+				
+					System.out.println("Please enter single filename >>> Exiting...");
+			}
 		}
-		catch (Exception e){
-			System.out.println("No File, please type 'exit' to quit program execution and run the program again with the right file(name) as input");
+	catch (Exception e) {
+		System.out.println("Please enter single filename >>> Exiting...");
 		}
-//		while (p.hasNext()) {
-//			String Tempv = p.next();
-//		}
-//		x.close();
-//		long Loadendepoch = System.currentTimeMillis();
-//		long TotloadTime = Loadendepoch-Loadstartepoch;
-//		System.out.printf("Dictionary loaded in %sms",String.valueOf(TotloadTime));
-		Scanner inStr = new Scanner(System.in);
-		String str1 = inStr.nextLine();
-		while (!str1.equals("exit")){
-			String outP = anagram(str1,filename);
-			System.out.printf(outP+"%n");
-			str1 = inStr.nextLine();
-		}
-		inStr.close();
 	}
 }
