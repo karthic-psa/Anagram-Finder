@@ -2,7 +2,6 @@ import java.io.*;
 import java.util.*;
 
 class anagrams {
-	
 	static int noofChars = 256;
 	private static Scanner p;
 	
