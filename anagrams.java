@@ -90,7 +90,7 @@ class anagrams {
 						str1 = inStr.nextLine();
 						}
 					else {
-						System.out.println("No words in file to search or filename given is wrong >>> Exiting...");
+						System.out.printf("No words in file to search or filename given is wrong >>> Exiting...%n");
 						str1 = "exit";
 					}
 				}
@@ -98,11 +98,11 @@ class anagrams {
 			}
 			else {
 				
-					System.out.println("Please enter single filename >>> Exiting...");
+					System.out.printf("Please enter single filename >>> Exiting...%n");
 			}
 		}
 	catch (Exception e) {
-		System.out.println("Please enter single filename >>> Exiting...");
+		System.out.printf("Please enter single filename >>> Exiting...%n");
 		}
 	}
 }
