@@ -1,11 +1,9 @@
-//package test;
 import java.io.*;
 import java.util.*;
 
 class anagrams {
 	
 	static int noofChars = 256;
-//	private static Scanner x;
 	private static Scanner p;
 	
 	static String anagram(String strin, ArrayList<String> list ) {
@@ -18,15 +16,7 @@ class anagrams {
 		for(int i = 0; i<str1.length;i++) {
 			cnt1[str1[i]]++;
 		}
-//		try {
-//			x=new Scanner(new File(filename));
-//		}
-//		catch (Exception e){
-//			return "No File";
-//		}
-		//while (list..hasNext()) {
 		for(String word:list) {
-			//String strTemp = x.next();
 			String strTemp = word;
 			int Tempcnt = 0;
 			char[] str2 = strTemp.toCharArray();
@@ -55,7 +45,6 @@ class anagrams {
 				}
 			}
 		}
-		//x.close();
 		long epochEnd = System.currentTimeMillis();
 		long totTime = epochEnd-epochIni;
 		if(Wordcnt>0) {
@@ -66,6 +55,7 @@ class anagrams {
 			return "No anagrams found for "+strin +" in "+String.valueOf(totTime)+"ms";
 		}
 	}
+	
 	public static void main(String args[]) {
 		try {
 			if (!args[0].isEmpty() && args.length==1) {
@@ -75,8 +65,6 @@ class anagrams {
 				ArrayList<String> words = new ArrayList<String>();
 				System.out.printf("%n%nWelcome to Anagram Finder%n");
 				System.out.println("-------------------------");
-		//		long Loadstartepoch = System.currentTimeMillis();
-		//		String brk = "";
 				try {
 						long Loadstartepoch = System.currentTimeMillis();
 						p=new Scanner(new File(filename));
@@ -91,12 +79,6 @@ class anagrams {
 				catch (Exception e){
 					System.out.println("No File, please type 'exit' to quit program execution and run the program again with the right file(name) as input");
 				}
-				
-				
-		//		p.close();
-		//		long Loadendepoch = System.currentTimeMillis();
-		//		long TotloadTime = Loadendepoch-Loadstartepoch;
-		//		System.out.printf("Dictionary loaded in %sms",String.valueOf(TotloadTime));
 				Scanner inStr = new Scanner(System.in);
 				System.out.println("AnagramFinder>Enter Word: ");
 				String str1 = inStr.nextLine();
