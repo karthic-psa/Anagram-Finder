@@ -18,7 +18,7 @@ An anagram is a word, phrase, or name formed by rearranging the letters of anoth
 
 2. Open Command Prompt in Windows or Terminal in Linux and cd (go) to your project directory.
 
-3. Compile the ```anagrams.java``` file using the command  ```javac anagrams.java```
+3. Compile the ```anagrams.java``` file using the command  ```javac anagrams.java``` (This will create the ```classname.class``` CLASS File that is needed to run the program).
 
 4. Run the program by ```java anagrams (yourfilename).txt```
 
